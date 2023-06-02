@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Simple Ota Client</string>
+    <string name="about_build_info_title">About current build information</string>
+    <string name="build_number_title">Build number</string>
+    <string name="android_version_title">Android version</string>
+    <string name="model_title">Model</string>
+    <string name="incremental_title">Incremental</string>
+    <string name="fingerprint_title">Fingerprint</string>
 </resources>
