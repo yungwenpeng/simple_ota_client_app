@@ -19,6 +19,13 @@ A few resources to get you started if this is your first Android Kotlin project:
 - [android.widget](https://developer.android.com/reference/android/widget/package-summary)  
   - Interfaces
     - [ExpandableListAdapter](https://developer.android.com/reference/android/widget/ExpandableListAdapter)  
-
+- AndroidManifest.xml documentation:  
+  - [android:usesCleartextTraffic](https://developer.android.com/guide/topics/manifest/application-element#usesCleartextTraffic)  
+- [okhttp](https://square.github.io/okhttp/)  
+- [gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)  
+  
+## Getting test ota server RESTAPI  
+You can run "http://localhost:3000" from the [nodejs-example](https://github.com/yungwenpeng/simple_ota_server)  
+  
 ## Demo  
 ![simple_ota_client_demo](simple_ota_client_demo.gif)  

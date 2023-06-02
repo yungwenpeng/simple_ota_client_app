@@ -3,10 +3,16 @@ package com.example.simpleotaclient
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.ExpandableListView
+import com.example.simpleotaclient.api.OkHttpApiService
 import com.example.simpleotaclient.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var apiService: OkHttpApiService
+    private lateinit var softwareUpdateExpandableListView: ExpandableListView
+    private lateinit var softwareUpdateAdapter: CustomExpandableListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +23,14 @@ class MainActivity : AppCompatActivity() {
         // Fetch current build information
         val currentExpandableListView = binding.listCurrentMain
         currentExpandableListView.setAdapter(configCurrentExpandableListView())
+
+        // Fetch software update list
+        apiService = OkHttpApiService(this, binding, ::configSoftwareUpdateExpandableListView)
+        softwareUpdateExpandableListView = binding.listSoftwareUpdate
+        softwareUpdateAdapter = configSoftwareUpdateExpandableListView()
+        softwareUpdateExpandableListView.setAdapter(softwareUpdateAdapter)
+
+        apiService.getOtaPackageInfo("all")
     }
 
     private fun buildData(key: String, value: String): Map<String, String> {
@@ -37,5 +51,15 @@ class MainActivity : AppCompatActivity() {
             )
         )
         return CustomExpandableListAdapter(currentGroupData, currentChildData)
+    }
+
+    private fun configSoftwareUpdateExpandableListView(): CustomExpandableListAdapter {
+        val softwareUpdateGroupData: List<Map<String, String>> = listOf(
+            mapOf("groupTitle" to getString(R.string.software_update_title))
+        )
+        val softwareUpdateChildData: MutableList<List<Map<String, String>>> = mutableListOf()
+        Log.d("MainActivity", "softwareUpdateChildData: $softwareUpdateChildData")
+
+        return CustomExpandableListAdapter(softwareUpdateGroupData, softwareUpdateChildData)
     }
 }

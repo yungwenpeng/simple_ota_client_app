@@ -17,7 +17,12 @@ class CustomExpandableListAdapter(
     }
 
     override fun getChildrenCount(groupPosition: Int): Int {
-        return childData[groupPosition].size
+        // Fix getChildrenCount error: java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+        return if (groupPosition >= 0 && groupPosition < childData.size) {
+            childData[groupPosition].size
+        } else {
+            0
+        }
     }
 
     override fun getGroup(groupPosition: Int): Any {
@@ -81,5 +86,10 @@ class CustomExpandableListAdapter(
 
     override fun isChildSelectable(groupPosition: Int, childPosition: Int): Boolean {
         return true
+    }
+
+    fun setChildData(data: List<List<Map<String, String>>>) {
+        childData = data
+        notifyDataSetChanged()
     }
 }
