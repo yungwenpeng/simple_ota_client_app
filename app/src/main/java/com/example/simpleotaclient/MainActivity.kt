@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ExpandableListView
+import android.widget.Toast
 import com.example.simpleotaclient.api.OkHttpApiService
 import com.example.simpleotaclient.databinding.ActivityMainBinding
 import com.example.simpleotaclient.websocket.MyWebSocketClient
@@ -37,8 +38,13 @@ class MainActivity : AppCompatActivity() {
         apiService.getOtaPackageInfo("all")
 
         val serverUri = URI(WEBSOCKET_SERVER_URL)
-        webSocketClient = MyWebSocketClient(this, binding, apiService, serverUri)
+        webSocketClient = MyWebSocketClient(this, apiService, serverUri)
         webSocketClient.connect()
+
+        val refreshButton = binding.refreshButton
+        refreshButton.setOnClickListener {
+            refreshMainActivity()
+        }
     }
 
     override fun onDestroy() {
@@ -74,5 +80,15 @@ class MainActivity : AppCompatActivity() {
         Log.d("MainActivity", "softwareUpdateChildData: $softwareUpdateChildData")
 
         return CustomExpandableListAdapter(softwareUpdateGroupData, softwareUpdateChildData)
+    }
+
+    fun refreshMainActivity() {
+        try {
+            apiService.getOtaPackageInfo("all")
+            softwareUpdateAdapter.notifyDataSetChanged()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(this, "Refresh Error. Please try it again.", Toast.LENGTH_SHORT).show()
+        }
     }
 }

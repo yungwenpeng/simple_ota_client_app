@@ -4,9 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
-import com.example.simpleotaclient.CustomExpandableListAdapter
 import com.example.simpleotaclient.api.OkHttpApiService
-import com.example.simpleotaclient.databinding.ActivityMainBinding
 import org.java_websocket.client.WebSocketClient
 import org.java_websocket.handshake.ServerHandshake
 import org.json.JSONObject
@@ -14,7 +12,6 @@ import java.net.URI
 
 class MyWebSocketClient(
     private val context: Context,
-    val binding: ActivityMainBinding,
     private val apiService: OkHttpApiService,
     serverUri: URI
 ) : WebSocketClient(serverUri) {
