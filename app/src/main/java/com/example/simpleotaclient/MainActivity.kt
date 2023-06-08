@@ -7,12 +7,16 @@ import android.util.Log
 import android.widget.ExpandableListView
 import com.example.simpleotaclient.api.OkHttpApiService
 import com.example.simpleotaclient.databinding.ActivityMainBinding
+import com.example.simpleotaclient.websocket.MyWebSocketClient
+import com.example.simpleotaclient.websocket.WebScoketServerConfig.WEBSOCKET_SERVER_URL
+import java.net.URI
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var apiService: OkHttpApiService
     private lateinit var softwareUpdateExpandableListView: ExpandableListView
     private lateinit var softwareUpdateAdapter: CustomExpandableListAdapter
+    private lateinit var webSocketClient: MyWebSocketClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,15 @@ class MainActivity : AppCompatActivity() {
         softwareUpdateExpandableListView.setAdapter(softwareUpdateAdapter)
 
         apiService.getOtaPackageInfo("all")
+
+        val serverUri = URI(WEBSOCKET_SERVER_URL)
+        webSocketClient = MyWebSocketClient(this, binding, apiService, serverUri)
+        webSocketClient.connect()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        webSocketClient.close()
     }
 
     private fun buildData(key: String, value: String): Map<String, String> {

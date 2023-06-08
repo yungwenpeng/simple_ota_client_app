@@ -92,4 +92,9 @@ class CustomExpandableListAdapter(
         childData = data
         notifyDataSetChanged()
     }
+
+    fun updateChildData(data: List<List<Map<String, String>>>) {
+        childData = data
+        notifyDataSetChanged()
+    }
 }

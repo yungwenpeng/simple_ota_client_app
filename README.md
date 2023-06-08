@@ -23,6 +23,8 @@ A few resources to get you started if this is your first Android Kotlin project:
   - [android:usesCleartextTraffic](https://developer.android.com/guide/topics/manifest/application-element#usesCleartextTraffic)  
 - [okhttp](https://square.github.io/okhttp/)  
 - [gson](https://mvnrepository.com/artifact/com.google.code.gson/gson)  
+- [Java WebSockets](https://github.com/TooTallNate/Java-WebSocket)  
+- [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines)
   
 ## Getting test ota server RESTAPI  
 You can run "http://localhost:3000" from the [nodejs-example](https://github.com/yungwenpeng/simple_ota_server)  
