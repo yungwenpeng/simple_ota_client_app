@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         return CustomExpandableListAdapter(softwareUpdateGroupData, softwareUpdateChildData)
     }
 
-    fun refreshMainActivity() {
+    private fun refreshMainActivity() {
         try {
             apiService.getOtaPackageInfo("all")
             softwareUpdateAdapter.notifyDataSetChanged()

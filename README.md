@@ -27,6 +27,7 @@ A few resources to get you started if this is your first Android Kotlin project:
 - [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines)  
 - [Regular FABs](https://m2.material.io/components/buttons-floating-action-button/android#regular-fabs)  
 - [Google Fonts Icons](https://fonts.google.com/icons)  
+- [Notifications overview](https://developer.android.com/develop/ui/views/notifications), [Create a Notification](https://developer.android.com/develop/ui/views/notifications/build-notification), [Android notifications](https://m2.material.io/design/platform-guidance/android-notifications.html#usage)   
   
 ## Getting test ota server RESTAPI  
 You can run "http://localhost:3000" from the [nodejs-example](https://github.com/yungwenpeng/simple_ota_server)  
