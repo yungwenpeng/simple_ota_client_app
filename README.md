@@ -33,4 +33,7 @@ A few resources to get you started if this is your first Android Kotlin project:
 You can run "http://localhost:3000" from the [nodejs-example](https://github.com/yungwenpeng/simple_ota_server)  
   
 ## Demo  
+Android Q  
 ![simple_ota_client_demo](simple_ota_client_demo.gif)  
+Android S  
+![simple_ota_client_demo_s](simple_ota_client_demo_s.gif)  
